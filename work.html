@@ -2,46 +2,51 @@
 <head>
     
 <meta charset="UTF-8">
-<script type="text/javascript">
+<style type="text/css">
+    
+body{
+    margin: 0;
+    top: 0;
+    left:0
+}
+#titleheader{
+    background: grey;
+    border: 1px solid;
+    text-align: center;;
+    font: 15px bold;
 
+}
+img{
+    float: left;
+}
 
-window.addEventListener('DOMContentLoaded', function() {
+#contextArea,#captureBtn{
+    visibility: hidden;
+}
 
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-    window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
- 
-    if (navigator.getUserMedia) {
-        navigator.getUserMedia({video: true,audio: true}, successCallback, errorCallback);
-    } else {
-        console.log('getUserMedia not supported in this browser.');
-    }
-
- 
-    function successCallback(stream) {
-
-        var video = document.querySelector('video');
-       
-        if (video.mozSrcObject !== undefined) {
-            video.mozSrcObject = stream;
-        } else {
-            video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
-        }
-        video.play();
-    }
- 
-    function errorCallback(error) {
-        console.error("Error Occured" + error);
-
-    }
-}, false);
-
-
-</script>   
+</style>
 </head>
 
 <body>
     
-<video width="300px" height="300px"> </video>
+<div id="titleHeader">
+    <p>This is a Cool Demo done in <a href="http://www.webrtc.org/">WebRTC</a></p>
+</div>
+<p>Click the below button to start capturing your Video and play with it by applying filters</p>
+<button id="startBtn">Start Capturing</button>
+<div id="filters">
+    
+</div>
+<div id="contextArea">
+    <video id="nrmVideo"></video>
+    <img src="">
+    <canvas></canvas>
+    <p id="error"></p>
+</div>
 
+<button id="captureBtn">Take Photo</button>
+<script type="text/javascript" src="js/video.js"></script>   
+
+<p>Follow me on Twitter <a href="https://twitter.com/_vigneshh">(@_vigneshh)</a></p>
 </body>
 </html>
