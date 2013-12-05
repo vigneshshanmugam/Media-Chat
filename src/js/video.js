@@ -10,14 +10,14 @@ var hdConstraints = {
 var vgaConstraints = {
   video: {
     mandatory: {
-      maxWidth: 500,
-      maxHeight: 500	
+      maxWidth: 600,
+      maxHeight: 400	
     }
   }
 };
 
-var canvasFeed = document.getElementById('feedCanvas');
-var ctx = canvasFeed.getContext('2d');
+var canvas = document.getElementById('imgCanvas');
+var ctx = canvas.getContext('2d');
 var image = document.querySelector('image');
 var video = document.querySelector('video');
 var captureBtn = document.getElementById('captureBtn');
@@ -25,9 +25,11 @@ var captureBtn = document.getElementById('captureBtn');
 captureBtn.addEventListener('click',function(){
 
 	if (videoAvailable) {
+    canvas.width = video.clientWidth;
+    canvas.height = video.clientHeight;
 
-		ctx.drawImage(video,0,0,video.clientWidth,video.clientHeight);
-		image.src = canvasFeed.toDataURL('image/webp');
+		ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+		//image.src = canvas.toDataURL('image/webp');
 	};
 });
 
@@ -66,29 +68,29 @@ startBtn.onclick = function(){
 
 //Render - Video in Canvas
 
-window.requestAnimationFrame = window.requestAnimationFrame || 
-			(window.requestAnimationFrame = window.webkitRequestAnimationFrame ||
-            window.mozRequestAnimationFrame ||
-            window.oRequestAnimationFrame ||
-            window.msRequestAnimationFrame ||
-            function( callback ){
-                window.setTimeout(callback, 1000 / 60);
-            });
+// 
+//window.requestAnimationFrame = window.requestAnimationFrame || 
+//      (window.requestAnimationFrame = window.webkitRequestAnimationFrame ||
+//             window.mozRequestAnimationFrame ||
+//             window.oRequestAnimationFrame ||
+//             window.msRequestAnimationFrame ||
+//             function( callback ){
+//                 window.setTimeout(callback, 1000 / 60);
+//             });
 
 
-var renderEverything = (function(){
+// var renderEverything = (function(){
 
-	var aniCanvas = document.getElementById('animatedCanvas');
-	var anCtxt = aniCanvas.getContext('2d');
+//  var aniCanvas = document.getElementById('animatedCanvas');
+//  var anCtxt = aniCanvas.getContext('2d');
 
-	function renderCanvas() {
-            window.requestAnimationFrame(renderCanvas);
-            anCtxt.drawImage(video, 0, 0, video.clientWidth,video.clientHeight);
+//  function renderCanvas() {
+//             window.requestAnimationFrame(renderCanvas);
+//             anCtxt.drawImage(video, 0, 0, video.clientWidth,video.clientHeight);
         
-	}
+//  }
 
-})();
-
+// })();
 
 
 
