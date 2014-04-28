@@ -1,8 +1,5 @@
-# Media-Chat
-#### Chat using WebRTC - 
+# Media-Caputure
+#### Capture the image by rendering it through canvas and streaming the Video using GerUserMedia by accessing the system Camera. :)
 
 [@vigneshh](http://twitter.com/_vigneshh)
 
-Uses GetUserMedia channel to get the Video Content and Uses Data Channel to do the chat.
-
-Have fun.
